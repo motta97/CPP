@@ -17,10 +17,7 @@ void create(int arr[],int n){
         q=q->next;
         q->data=arr[i];
         q->next=NULL;
-
-
     }
-
 }
 void displayLL(linkeList *l){
 linkeList *tmp = l;
@@ -28,7 +25,19 @@ while(tmp){
     cout<<tmp->data<<endl;
     tmp=tmp->next;
 }
-
+void displayRecursive(linkeList * p){
+    if(p==NULL){
+        return;
+    }
+    cout<<p->data<<endl;
+    displayRecursive(p->next);
+}
+void displayRecusiveA(linkeList * p){
+    if(p){
+        cout<<p->data<<endl;
+        displayRecusiveA(p->next);
+    }
+}
 
 }
 
@@ -36,5 +45,7 @@ int main(){
 int arr[]={5,4,3,2,1};
 create(arr,5);
 displayLL(first);
-
+displayRecursive(first);
+    displayRecursiveA(first);
+    //all of them work the same
 }
