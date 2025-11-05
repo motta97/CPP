@@ -1,3 +1,4 @@
+#include<iostream>
 class queue{
     private:
     int size;
@@ -17,7 +18,10 @@ class queue{
         return front==-1;
     }
     void enqueue(int d){
-        if(isFull())return;
+        if(isFull()){
+            std:: cout<<"Queue is Full\n";
+            return
+                };
         if(front==-1)front =0;
         rear++;
         static_array[rear]=d;
@@ -25,7 +29,7 @@ class queue{
     int dequeue(){
         int element;
         if(isEmpty()){
-            cout<<"Queue is Empty!\n";
+            std::cout<<"Queue is Empty!\n";
             return -1;
         }
         element = static_array[front];
