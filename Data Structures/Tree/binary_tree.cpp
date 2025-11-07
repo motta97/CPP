@@ -12,3 +12,11 @@ binary_tree_node<int> * binary_search(binary_tree_node<int> *t,int key){
     else if(t->data>key)return binary_search(t->left_child,key);
     else return binary_search(t->right_child,key);
 }
+binary_tree_node<int> * binary_search_loop(binary_tree_node<int> *t,int key){
+    while (t){
+    if(t->data==key)return t;
+    else if(t->data>key)return t=t->left_child;
+    else return t=t->right_child;
+    }
+    return nullptr;
+}
