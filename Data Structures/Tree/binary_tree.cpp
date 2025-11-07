@@ -20,3 +20,25 @@ binary_tree_node<int> * binary_search_loop(binary_tree_node<int> *t,int key){
     }
     return nullptr;
 }
+void insert(binary_tree_node<int> * t,int key ){
+    binary_tree_node <int> *r = nullptr, *p;
+    while(t!=nullptr){
+        //tailing pointer
+        r = t;
+        if(t->data==key)return;
+        else if(t->data>key){
+            t=t->left_child;
+        }
+        else t= t->right_child;
+
+    }
+    p = new binary_tree_node<int>;
+    p->left_child=p->right_child=nullptr;
+    p->data=key;
+    if(key>r->data)r->right_child=p;
+    else r->left_child=p;
+
+    //for creating a BST, we can create only a root, and then
+    //insert the rest of the elements using this function
+
+}
