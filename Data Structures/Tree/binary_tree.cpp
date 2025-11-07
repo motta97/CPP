@@ -42,3 +42,10 @@ void insert(binary_tree_node<int> * t,int key ){
     //insert the rest of the elements using this function
 
 }
+void printBinaryTreeInt(binary_tree_node<int>* n){
+    if(n==nullptr)return;
+   
+    cout<<n->data<<" ";
+    printBinaryTreeInt(n->left_child);
+    printBinaryTreeInt(n->right_child);
+}
