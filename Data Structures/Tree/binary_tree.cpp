@@ -49,3 +49,60 @@ void printBinaryTreeInt(binary_tree_node<int>* n){
     printBinaryTreeInt(n->left_child);
     printBinaryTreeInt(n->right_child);
 }
+
+
+
+int Height(binary_tree_node<int>* p){
+    int x,y;
+    if(p==nullptr)return 0 ;
+    x=Height(p->left_child);
+    y=Height(p->right_child);
+    return x>y? x+1: y+1;
+}
+binary_tree_node<int>* InPre(binary_tree_node<int> *p){
+    while(p && p->right_child != nullptr){
+        p=p->right_child;
+    }
+    return p;
+}
+binary_tree_node<int>* InSucc(binary_tree_node<int> *p){
+    while(p && p->left_child != nullptr){
+        p=p->left_child;
+    }
+    return p;
+}
+
+binary_tree_node<int>* Delete(binary_tree_node <int> * p,int key){
+    if(p==nullptr)return nullptr;
+    
+    
+    
+    binary_tree_node<int> *q = new binary_tree_node<int>;
+
+    if(key<p->data){
+        Delete(p->left_child,key);
+    }
+    else if(key>p->data){
+        Delete(p->right_child,key);
+    }
+    else{
+   
+        if(p->left_child==nullptr && p->right_child ==nullptr){
+        
+        free(p);
+        return nullptr;
+        }
+        if(Height(p->left_child)>Height(p->right_child)){
+            q=InPre(p->left_child);
+            p->data = q->data;
+            p->left_child=Delete(p->left_child,q->data);
+        }
+        else{
+            q=InSucc(p->left_child);
+            p->data = q->data;
+            p->right_child=Delete(p->right_child,q->data);
+        }
+
+    }
+    return p;
+}
