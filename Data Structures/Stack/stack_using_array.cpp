@@ -1,14 +1,15 @@
 #include <iostream>
 using namespace std;
+template <typename T>
 class stack_using_array{
     private:
     int size;
-    int *p;
+    T *p;
     int count = -1;
     public:
     stack_using_array(int s){
         this->size= s;
-        p = new int[size];
+        p = new T[size];
     }
     bool isFull(){
         return count==size-1;
@@ -24,10 +25,12 @@ class stack_using_array{
         else cout<<"Stack Overflow!"<<endl;
 
     }
-    void pop(){
+    T pop(){
         if(!isEmpty()){
             count--;
+            return p[count+1];
         }
+        return '0';
     }
     void peek(int index){
         if(!isEmpty()&&index<=count){
@@ -46,26 +49,3 @@ class stack_using_array{
 
 
 };
-
-
-
-
-int main(){
-
-    int size;
-    cout<<"Enter the size of the stack: ";
-    cin>>size;
-    stack_using_array s1(size);
-    cout<<s1.isEmpty()<<endl;
-    s1.push(7);
-    s1.push(8);
-    cout<<s1.stackTop()<<endl;
-    s1.pop();
-    cout<<s1.stackTop()<<endl;
-    s1.push(1);
-    s1.push(10);
-    s1.push(20);
-    s1.peek(2);
-    cout<<s1.stackTop()<<endl;
-
-}
