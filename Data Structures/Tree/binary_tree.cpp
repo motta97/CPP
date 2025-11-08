@@ -102,3 +102,22 @@ binary_tree_node<int>* Delete(binary_tree_node <int> * p,int key){
     }
     return p;
 }
+
+int findMinBST(binary_tree_node<int> * n){
+    if(n==nullptr)return -1;
+    binary_tree_node<int> *r;
+    while(n!=nullptr){
+        r = n;
+        n=n->left_child;
+    }
+    return r->data;
+}
+int findMaxBST(binary_tree_node<int> *n){
+     if(n==nullptr)return -1;
+    binary_tree_node<int> *r;
+    while(n!=nullptr){
+        r = n;
+        n=n->right_child;
+    }
+    return r->data;
+}
