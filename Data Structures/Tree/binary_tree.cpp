@@ -121,3 +121,14 @@ int findMaxBST(binary_tree_node<int> *n){
     }
     return r->data;
 }
+void sort_array_BST(int arr[],int size){
+    binary_tree_node <int> *root = new binary_tree_node<int>;
+    for(int i = 0;i<size;i++){
+        insert(root,arr[i]);
+    }
+    for(int i = 0;i<size;i++){
+        arr[i]=findMinBST(root);
+        Delete(root,arr[i]);
+    }
+    
+}
