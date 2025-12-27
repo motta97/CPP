@@ -15,7 +15,7 @@ void create_heap(vector<int> v){
   //the input is a normal vector that is not arranged as heap
   //we loop over all elements to form a heap
     int i;
-    for(i=2;i<v.size();i++){
+    for(i=2;i<=v.size();i++){
         insert(v,i);
     }
 }
