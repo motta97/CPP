@@ -1,13 +1,13 @@
-void delete_from_min_heap(int A[],int n){
+void delete_from_min_heap(int A[],int &n){
     //A is the array of the heap
     //n is the last index
     int x,i,j,tmp;
-    x=A[n];//the last element
-    A[1]=x;//the first element is the element to be removed
+    x=A[1];
+    A[1]=A[n];//the first element is the element to be removed
     i=1;
     j=2*i;
-
-    while(j<n-1){
+    n--;
+    while(j<=n){
 
         if(A[j+1]<A[j]){
             j+=1;
@@ -23,4 +23,5 @@ void delete_from_min_heap(int A[],int n){
         }
         else break;
     }
+    A[n+1]=x;//for sorting the array using heap sort
 }
