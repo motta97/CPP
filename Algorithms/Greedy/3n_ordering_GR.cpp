@@ -3,25 +3,23 @@ using namespace  std;
 void threeNOrder(int arr[], int n) {
     //one to work on negatives
     for (int i = 0; i < 3 * n - 1; i++) {
-        if (arr[i] == -1 ) {
             for (int j = i; j > 0; j--) {
-                if(j>0&&arr[j-1]==-1)break;//improvement
-                swap(arr[j], arr[j - 1]);
+                if(arr[j]==-1 && j!=0 &&arr[j-1]!=-1)swap(arr[j], arr[j - 1]);
+                else break;
             }
         }
-    }
-    //one to work on positives
     for (int i = 0; i < 3 * n - 1; i++) {
-        if (arr[i] == 1) {
             for (int j = i; j < 3 * n - 1; j++) {
-                if(j<3*n-1&&arr[j+1]==1)break;//improvement
+                if(arr[j]==1 && j!=3*n-1 &&arr[j+1]!=1)
                 swap(arr[j], arr[j + 1]);
+                else break;
 
             }
         }
+
+
     }
 
-}
 
 
 
