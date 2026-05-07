@@ -1,5 +1,6 @@
 #pragma once
-#include<string>
+#include <string>
+#include <vector>
 using namespace std;
 class hole {
 public:
@@ -21,7 +22,7 @@ public:
 
 };
 class memory{
-    public:
+public:
     int size;
-    int memory_array[size];
-}
+    std::vector<int> memory_array;
+};
