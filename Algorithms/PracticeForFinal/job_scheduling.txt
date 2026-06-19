@@ -1,0 +1,48 @@
+Consider the problem of scheduling n jobs of known durations 𝑡1,𝑡2…𝑡𝑛  
+for execution by a computing 
+machine with m processors, where m ≤ n. The jobs can be executed in any order on 
+any available 
+processor that has currently no assigned job, but once the job started on a 
+given processor, the processor 
+will not be relinquished until it finishes executing the assigned job. 
+We need to find a schedule that 
+minimizes the total time spent by all the jobs in the system. 
+Assume that the time spent by one job in 
+the system is the sum of the time spent by this job in waiting plus the time 
+spent on its execution. Design 
+a greedy algorithm to find the required schedule for this problem 
+(write your algorithm in the form of 
+pseudocode). Discuss if the design algorithm always finds the optimal solution. Then, compute its order 
+of growth in terms of Big-O.
+
+pseudocode:
+
+schedule(jobs[0...n-1],m)
+    initialize m processor as available
+    for i = 0 to i =n-1
+        find next job with smallest duration in the jobs
+        wait until a processor is available
+        assign job to that processor
+
+more detailed implementation:
+
+schedule(jobs[0...n-1],m)
+    vector<int> processors;
+    for(int i =0 ; i<m;i++)
+        processors.push_back(0);
+    sort(jobs);
+    for(int j=0;j<n;j++)
+        int processor_available = processors.pop_front();
+        fork 
+            allocate(procceor_available, jobs[j]);
+        join_none
+        // the above fork block just to allow the loop to continue while the job is sitll running
+        //to add more jobs to the system with no waiting until it finishes
+
+
+the algorithm doesn't find the optimal solution always, because choosing the job
+with minimum duration continuosly doesn't necessarily get to the
+aboslute minimum waiting time
+
+we iterate for n times, and each time we find the min which compares n-i elements
+so big oh is n squared

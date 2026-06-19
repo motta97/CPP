@@ -1,0 +1,27 @@
+// The chess Knight can move two squares horizontally, then one square vertically, or 
+// two squares vertically then one square horizontally in the chessboard as long as the 
+// final square it reaches is empty (as shown in the example figure). Design a greedy 
+// algorithm in the form of pseudo-code to find the minimum length path by which a 
+// Knight can move from one corner of an 8 × 8 chessboard to the diagonally opposite 
+// corner (the length of a path is measured by the number of squares it passes through 
+// including the first and the last squares). Then, find its order of growth. 
+
+
+chessboard(start, target)
+    current = start;
+    mark current as visited
+    bestMove=NULL
+    bestDistance=INFINITY
+    while (current != target)
+        for each possible move m from current  
+            if m is inside board and not visited
+                d = EuclideanDistance(m, target)
+                if d<bestDistance
+                    bestDistance=d
+                    bestMove = m
+        current = bestMove;
+        mark current as visited
+        length++
+
+
+    return length

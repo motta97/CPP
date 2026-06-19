@@ -1,0 +1,20 @@
+Consider an equilateral triangle formed by closely packed coins similar to the one 
+shown in the given figure with the side composed of n coins. Design a brute-force 
+algorithm in the form of pseudo-code to flip the triangle upside down in the minimum 
+number of moves assume we can slide one coin at a time. Then, find its order of 
+growth. 
+
+
+given n
+int i =1, j =n, num_iterations = n-1
+
+while(i != j)
+    int k =0 
+    while(k<num_iterations)
+        move one item from jth row to the ith row
+    num_iterations-=2
+    i++
+    j--
+
+
+order of growth is n squared since we iterate n-1 + n-3 + n-4 + ....

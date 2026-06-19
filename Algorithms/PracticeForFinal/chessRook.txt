@@ -1,0 +1,69 @@
+The chess Rook can move horizontally or vertically any number of squares in the chessboard as long as its 
+path is empty. Design a greedy algorithm in the form of pseudo-code to find the number of paths by which 
+a Rook can move from one corner of a chessboard to the diagonally opposite corner. The length of a path is 
+measured by the number of squares it passes through including the first and the last squares. Then, find the 
+efficiency of the designed algorithm. 
+
+
+
+chessRook(position p, board b)
+    count=0
+    available_moves[]
+    if(p.x==n-1 and p.y==n-1)
+        return 0
+    b[p.x][p.y]=1
+    available_moves=find_available_moves(p, b,&size)
+    if(size>1)
+        count+=size
+        for i =0 to size
+            count+=chessRook(available_moves[i],board)
+    else if(size(available_moves)==1)
+        count+=chessRook(available_moves[0])
+    else reutrn 0
+
+find_available_moves(position p, board b[0...n-1][0...n-1],&size)
+    index=0;
+    //right
+    if(p.x<n and b[p.x+1][p.y]==-1)
+        available_moves[index].x=p.x+1
+        available_moves[index].y = p.y
+        b[p.x+1][p.y]=1
+        index++
+    //left
+    if(p.x>0 and b[p.x-1][p.y]==-1)
+        available_moves[index].x=p.x-1
+        available_moves[index].y = p.y
+        b[p.x+1][p.y]=1
+        index++
+    //downward
+     if(p.y>0 and b[p.x][p.y-1]==-1)
+        available_moves[index].x=p.x
+        available_moves[index].y = p.y-1
+        b[p.x][p.y-1]=1
+        index++
+    //upward
+     if(p.y<n and b[p.x][p.y+1]==-1)
+        available_moves[index].x=p.x
+        available_moves[index].y = p.y+1
+        b[p.x][p.y+1]=1
+        index++
+   size=index+1
+   return available_moves
+
+chessRook(p)
+    total=0
+    
+    if p is destination
+        return 1
+    
+    mark p as visited
+    
+    moves = countAllMoves(p)
+    
+    for each move m from moves
+        total+=countRook(m)
+    
+    unmark p
+    return total
+    
+

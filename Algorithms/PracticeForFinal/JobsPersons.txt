@@ -1,0 +1,42 @@
+Consider the job assignment problem with n persons and m jobs where n ≤ m. Assume also if we assign 
+person p to job j it will cost Cpj. Assume that the even-numbered jobs can be assigned only to the even
+numbered persons. Design a brute-force algorithm in the form of pseudo-code that finds the optimal 
+assignment that minimizes the total cost. Then, compute its order of growth in Big-O notation.
+
+pseudocode:
+
+
+find_optimal(perosns[1..n], jobs[1...m])
+
+
+    minCost=INFINITY
+    minP=null
+    numbers = {1....m} //represents the jobs assigned to persons
+
+    for each possible subset s from numbers
+        for each permuation p of s
+            if(isEvenValid(p,n))
+                cost = calcCost(p,n)
+                if(cost<minCost)
+                    minCost=cost
+                    minP=p
+    return minP
+
+isEvenValid(p,n)
+    for i = 1 to i = n
+        if (p[i]%2==0) //even-numbered jobs
+            if(i%2!=0) // not even-persons
+                return false
+
+    return true
+
+calcCost(p,n)
+    cost = 0
+    for i =1 to i = n
+        cost+=C[i][p[i]]
+    return cost
+    
+Big-Oh:
+    assuming m = n or very close
+    n!*(n+n) = n!*2n
+    O(n!*n)

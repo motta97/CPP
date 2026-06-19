@@ -1,0 +1,26 @@
+Consider an arrangement of integers from 1 to n2 in an n × n matrix, with each number occurring exactly 
+once so that the sum of the elements in each row is the same, which is equal to the sum of the elements 
+in each column, and also equal to the sum of the elements in each main diagonal. Design an exhaustive
+search algorithm for generating all n × n matrices that satisfy the condition above (write your algorithm 
+in the form of pseudocode). Then, compute its order of growth in terms of Big-O. 
+
+pseudocode:
+fun(n)
+    numbers = {1....n^2}
+    for each new permuation p from numbers
+        fill matrix A with p
+        if(isMagicSquare(A))
+            outptut A
+            //note that he wants all matrices that does that not just one
+
+
+isMagicSquare(A)
+    compute target sum from first row
+    check every row
+    check every column
+    check the main diagonal
+    return true if all sums are equal
+
+Big-Oh is (n^2)! 
+fun(n) iterates for (n^2)! and for each iteration it does n^2 operations
+in the isMagicSquare, so total is O(n^2*(n^2)!) which is O((n^2)!)

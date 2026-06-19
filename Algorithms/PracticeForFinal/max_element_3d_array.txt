@@ -1,0 +1,31 @@
+Consider a set of integers 
+arranged in a three-dimensional array of size n × m × k. 
+i. Write the pseudocode for a divide-and-conquer algorithm for 
+finding the largest element in this array.
+ii. Write the pseudocode for a brute-force algorithm for finding the smallest element in this array. Then, 
+compute its order of growth. 
+
+
+pseudocode divide and conquer:
+find_max(A, x1, x2, y1, y2, z1, z2)
+    //x1, x2, y1, y2, z1 and z2 represent boundaries
+    if(x1==x2 AND y1==y1 AND z1==z2)
+        return A[x1][y1][z1]//or x2y2z2 or any combination
+    mid = (x1+x2)/2
+    max1 = find_max(A, x1, mid, y1, y2, z1, z2);
+    max2 = find_max(A, mid+1, x2, y1, y2, z1, z2);
+    if(max1>max2)
+        return max1
+    return max2
+
+complexity: O(m*n*k)
+
+pseudocode brute force: 
+min = INFINITY
+for i =0 to n i++
+    for j = 0 to m j++
+        for x =0 to k k++
+            if(A[i][j][k]<min)
+                min = A[i][j][k]
+return min
+complexity: O(m*n*k)

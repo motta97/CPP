@@ -1,0 +1,29 @@
+Consider the problem of scheduling n jobs of known durations 𝑡1,𝑡2…𝑡𝑛  for execution by a computing 
+machine with m processors, where m ≤ n. The jobs can be executed in any order on any available processor 
+that has currently no assigned job, but once the job started on a given processor, the processor will not be 
+relinquished until it finishes executing the assigned job. We need to find a schedule that minimizes the total 
+time spent by all the jobs in the system. Assume that the time spent by one job in the system is the sum of the 
+time spent by this job in waiting plus the time spent on its execution. Design a dynamic programming algorithm 
+in the form of pseudo-code to find the optimal schedule, show the detailed steps you used and state your 
+assumptions. 
+
+
+schedule(jobs[1...n], durations[1....n], m)
+    construct a multistage graph for the durations
+    choose the path p with lowest total duration
+    initialize m processors
+    for each process pr in p
+        assign pr to an available processor
+
+efficiency:
+    multistage graph takes about (n+1)!
+    choosing the path with lowest duration takes n(n+1)!
+    assigning to processor takes O(1)
+    total O(n(n+1)!)
+
+F(n)
+    initialize static arr[0...n] with -1
+    arr[0]=arr[1]=1
+    if(arr[n]==-1)
+        arr[n]=F(n-1)+F(n-2)
+    return arr[n]
